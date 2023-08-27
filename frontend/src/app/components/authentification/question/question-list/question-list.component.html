@@ -1,0 +1,8 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Questions</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let question of questions">
+      <a [routerLink]="['/questions', question._id]">{{ question.title }}</a>
+    </li>
+  </ul>
+</div>

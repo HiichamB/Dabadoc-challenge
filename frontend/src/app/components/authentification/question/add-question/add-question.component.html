@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="mb-4">Post a Question</h2>
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label>Title</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            name="title"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Content</label>
+          <textarea
+            class="form-control"
+            rows="4"
+            formControlName="content"
+            name="content"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Location</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="location"
+            name="location"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="postQuestion()">
+          Post Question
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
