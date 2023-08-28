@@ -4,7 +4,7 @@ const {
   updateData,
   getData,
   getDataById,
-} = require('./controllerTemplate')
+} = require('../helpers/crud.functions')
 
 exports.add = (req, res) => {
   addData(req, res, Question)

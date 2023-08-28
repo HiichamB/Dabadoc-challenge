@@ -7,16 +7,22 @@ import { User } from '../models/user.model'
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/api/users'
+  private apiUrl = 'http://localhost:3000/api'
 
   constructor(private http: HttpClient) {}
 
-  signup(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/signup`, user)
+  signin(user: User) {
+    return this.http.post<{ token: string; expiresIn: string; user: User }>(
+      `${this.apiUrl}/connect/login`,
+      user,
+    )
   }
 
-  signin(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signin`, user)
+  signup(user: User) {
+    return this.http.post<{ message: string }>(
+      `${this.apiUrl}/connect/register`,
+      user,
+    )
   }
 
   // Add more user-related methods as needed

@@ -1,20 +1,20 @@
-var createError = require('http-errors')
-
-var path = require('path')
-var cookieParser = require('cookie-parser')
-const express = require('express')
-const app = express()
-
+const createError = require('http-errors')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require('cors')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const express = require('express')
+const app = express()
+
+const verifyToken = require('./middlewares/token.validation.middleware.js')
 
 dotenv.config()
+
 app.use(cors())
 app.use(cookieParser())
 
-// DB connection
 mongoose
   .connect(`${process.env.DB_URL}/${process.env.DB_NAME}`)
   .then(() => {
@@ -31,6 +31,24 @@ app.use(express.json({ limit: '50mb' }))
 app.use('/uploads', express.static('uploads'))
 
 app.use(morgan('dev'))
+
+const answerRoute = require('./routes/answer.route')
+const userRoute = require('./routes/user.route')
+const questionRoute = require('./routes/question.route')
+
+const loginRoute = require('./routes/login.routes.js')
+
+console.log('typeof verifyToken', typeof verifyToken)
+
+app.use('/api/connect', loginRoute)
+
+app.use(verifyToken)
+
+app.use('/api/users', userRoute)
+app.use('/api/answers', answerRoute)
+app.use('/api/questions', questionRoute)
+
+// DB connection
 
 // Error handling
 app.use((req, res, next) => {

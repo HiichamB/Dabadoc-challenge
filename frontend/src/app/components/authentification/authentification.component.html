@@ -1,5 +1,5 @@
 <section class="vh-100">
-  <div class="container-fluid h-custom">
+  <div class="h-100 container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img
@@ -13,12 +13,8 @@
           <li class="nav-item">
             <a
               class="nav-link active"
-              id="tab-login"
-              data-mdb-toggle="pill"
-              href="#pills-login"
-              role="tab"
-              aria-controls="pills-login"
-              aria-selected="true"
+              [class.active]="isLogin"
+              (click)="changeAction('login')"
             >
               Login
             </a>
@@ -26,12 +22,8 @@
           <li class="nav-item" role="presentation">
             <a
               class="nav-link"
-              id="tab-register"
-              data-mdb-toggle="pill"
-              href="#pills-register"
-              role="tab"
-              aria-controls="pills-register"
-              aria-selected="false"
+              [class.active]="!isLogin"
+              (click)="changeAction('register')"
             >
               Register
             </a>
@@ -49,6 +41,25 @@
               placeholder="Enter a valid email address"
               formControlName="email"
             />
+            <ng-container
+              *ngIf="
+                form.get('email')?.invalid &&
+                (form.get('email')?.touched || form.get('email')?.dirty)
+              "
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('email')?.errors?.['email'] "
+              >
+                {{ 'Invalid email' }}
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="form.get('email')?.errors?.['required'] "
+              >
+                {{ 'Required' }}
+              </span>
+            </ng-container>
           </div>
 
           <!-- Password input -->
@@ -61,16 +72,29 @@
               placeholder="Enter password"
               formControlName="password"
             />
+            <ng-container
+              *ngIf="
+                form.get('password')?.invalid &&
+                (form.get('password')?.touched || form.get('password')?.dirty)
+              "
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('password')?.errors?.['required'] "
+              >
+                {{ 'Required' }}
+              </span>
+            </ng-container>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
             <button
               type="button"
-              class="btn btn-primary btn-lg"
+              class="btn btn-primary"
               style="padding-left: 2.5rem; padding-right: 2.5rem;"
               (click)="sendData()"
             >
-              Login
+              {{ isLogin ? 'Login' : 'Register' }}
             </button>
           </div>
         </form>

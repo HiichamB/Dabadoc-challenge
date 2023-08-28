@@ -12,8 +12,17 @@ const routes: Routes = [
     component: QuestionListComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'questions/add',
+    component: AddQuestionComponent,
+    canActivate: [AuthGuard],
+  },
 
-  { path: 'questions/:id', component: AddQuestionComponent },
+  {
+    path: 'questions/:id',
+    component: AddQuestionComponent,
+    canActivate: [AuthGuard],
+  },
   // {
   //   path: 'questions/:id/answer',
   //   component: AnswerComponent,
