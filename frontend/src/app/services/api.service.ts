@@ -34,11 +34,6 @@ export class APIService {
             ].includes(error?.error?.error?.message || error?.error?.message)
           ) {
             sessionStorage.removeItem('token')
-            // this.authService.showInvalidTokenModel = true;
-            // this.authService.errorDialog = {
-            //   message: error.error.message,
-            //   statusText: error.statusText,
-            // };
           }
           return throwError(() => error)
         }),
@@ -61,11 +56,6 @@ export class APIService {
             ].includes(error?.error?.error?.message || error?.error?.message)
           ) {
             sessionStorage.removeItem('token')
-            // this.authService.showInvalidTokenModel = true;
-            // this.authService.errorDialog = {
-            //   message: error.error.message,
-            //   statusText: error.statusText,
-            // };
           }
 
           return throwError(() => error)
@@ -93,11 +83,6 @@ export class APIService {
             ].includes(error?.error?.error?.message || error?.error?.message)
           ) {
             sessionStorage.removeItem('token')
-            // this.authService.showInvalidTokenModel = true;
-            // this.authService.errorDialog = {
-            //   message: error.error.message,
-            //   statusText: error.statusText,
-            // };
           }
 
           return throwError(() => error)

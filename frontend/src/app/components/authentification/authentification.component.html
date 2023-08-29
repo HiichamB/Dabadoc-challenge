@@ -1,15 +1,10 @@
 <section class="vh-100">
-  <div class="h-100 container-fluid h-custom">
+  <div class="h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid"
-          alt="Sample image"
-        />
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+      <h2 class="my-3 text-center">Daba Doc Challenge</h2>
+
+      <div class="col-md-6">
+        <ul class="nav nav-pills nav-justified mb-3">
           <li class="nav-item">
             <a
               class="nav-link active"
@@ -86,7 +81,11 @@
               </span>
             </ng-container>
           </div>
-
+          <div class="my-3" *ngIf="showError">
+            <span class="text-danger">
+              {{ showError }}
+            </span>
+          </div>
           <div class="text-center text-lg-start mt-4 pt-2">
             <button
               type="button"

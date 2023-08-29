@@ -38,8 +38,6 @@ const questionRoute = require('./routes/question.route')
 
 const loginRoute = require('./routes/login.routes.js')
 
-console.log('typeof verifyToken', typeof verifyToken)
-
 app.use('/api/connect', loginRoute)
 
 app.use(verifyToken)

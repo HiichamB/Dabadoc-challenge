@@ -1,3 +1,5 @@
+import { Answer } from './answer.model'
+
 export interface Question {
   _id: string
   title: string
@@ -5,4 +7,5 @@ export interface Question {
   location: string
   user: string
   likes: string[]
+  answers: Answer[]
 }

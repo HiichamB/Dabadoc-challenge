@@ -1,0 +1,28 @@
+<div>
+  <h3>Add Response:</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <textarea
+        class="form-control"
+        formControlName="content"
+        placeholder="Enter your response"
+      ></textarea>
+      <ng-container
+        *ngIf="
+          form.get('content')?.invalid &&
+          (form.get('content')?.touched || form.get('content')?.dirty)
+        "
+      >
+        <span
+          class="text-danger"
+          *ngIf="form.get('content')?.errors?.['required'] "
+        >
+          {{ 'Required' }}
+        </span>
+      </ng-container>
+    </div>
+    <button type="submit" class="btn btn-primary my-3">
+      Add Response
+    </button>
+  </form>
+</div>

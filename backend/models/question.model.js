@@ -8,6 +8,16 @@ const questionSchema = new Schema({
   location: { type: String, required: true },
   user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }],
+})
+
+questionSchema.pre(/find.*/, function (next) {
+  this.populate([
+    {
+      path: 'answers',
+    },
+  ])
+  next()
 })
 
 questionSchema.post('save', async function (doc, next) {

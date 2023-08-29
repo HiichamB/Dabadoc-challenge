@@ -7,6 +7,8 @@ const userSchema = new Schema({
   lastConnectionDate: { type: Date, default: new Date() },
   active: { type: Boolean, default: true },
   questions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  favorites: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }],
 })
 
 const User = mongoose.model('User', userSchema)

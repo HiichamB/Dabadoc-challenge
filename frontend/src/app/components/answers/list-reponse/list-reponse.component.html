@@ -1,0 +1,10 @@
+<div>
+  <h3>Responses:</h3>
+  <div *ngIf="!answers.length">
+    <p class="mx-2">Aucune reponse exist</p>
+  </div>
+
+  <ul *ngIf="answers.length">
+    <li *ngFor="let response of answers">{{ response.content }}</li>
+  </ul>
+</div>

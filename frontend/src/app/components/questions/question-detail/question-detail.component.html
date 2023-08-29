@@ -1,0 +1,28 @@
+<div class="">
+  <h2 class="mb-4">Question Detail</h2>
+
+  <div class="">
+    <div class="">
+      <div class="card">
+        <div class="card-header">
+          {{ question?.title }}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ question?.content }}</p>
+          <p class="card-text">Location: {{ question?.location }}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" (click)="likeUnlike()">
+            {{ !isLiked ? 'Like' : 'Unlike' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <app-list-reponse [answers]="question?.answers || []"></app-list-reponse>
+    <app-add-reponse
+      (newAnswer)="addResponse($event)"
+      [questionId]="question?._id || ''"
+    ></app-add-reponse>
+  </div>
+</div>

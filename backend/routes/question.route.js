@@ -3,9 +3,10 @@ const router = express.Router()
 const questionController = require('../controllers/question.controller')
 
 // Generic routes using the controller functions
-router.post('/', questionController.add)
-router.get('/', questionController.getAll)
-router.get('/:id', questionController.get)
-router.put('/:id', questionController.update)
+router.route('/').get(questionController.getAll).post(questionController.add)
+
+router.post('/likeUnlike', questionController.likeUnlike)
+
+router.route('/:id').get(questionController.get).put(questionController.update)
 
 module.exports = router

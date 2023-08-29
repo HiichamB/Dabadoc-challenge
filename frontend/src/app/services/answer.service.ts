@@ -8,7 +8,7 @@ import { APIService } from './api.service'
   providedIn: 'root',
 })
 export class AnswerService {
-  private apiUrl = 'http://localhost:3000/api/answers'
+  private apiUrl = '/answers'
 
   constructor(private apiService: APIService) {}
 

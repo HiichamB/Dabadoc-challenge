@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service'
 export class AuthentificationComponent {
   form!: FormGroup
   isLogin: boolean = true
+  showError: string = ''
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -39,13 +40,10 @@ export class AuthentificationComponent {
 
       console.log('invalid controls -->', invalidControls)
 
-      // #endregion invalids controls
-
       console.error(this.form)
     } else {
       let newForm = this.form.getRawValue()
 
-      console.log('form newForm. ', newForm)
       if (this.isLogin) {
         this.userService
           .signin(newForm)
@@ -56,16 +54,11 @@ export class AuthentificationComponent {
               sessionStorage.setItem('user', JSON.stringify(result.user))
               sessionStorage.setItem('expiresIn', result.expiresIn)
 
-              console.log(result)
-              // this.authService.isLoggedIn()
-              console.log('before')
-
               this.router.navigate(['questions'])
-
-              console.log('after')
             },
             error: (error: any) => {
-              // this.messagesService.showMessage('addError');
+              if (error.message) this.showError = error.error.message
+              console.error(error)
             },
           })
       } else {
@@ -78,13 +71,17 @@ export class AuthentificationComponent {
               this.form.reset()
             },
             error: (error: any) => {
-              // this.messagesService.showMessage('addError');
+              if (error.message) this.showError = error.error.message
+
+              console.error(error)
             },
           })
       }
     }
   }
   changeAction(action: string) {
+    this.showError = ''
+
     action === 'login' ? (this.isLogin = true) : (this.isLogin = false)
   }
 }

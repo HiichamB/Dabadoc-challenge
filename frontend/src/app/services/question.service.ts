@@ -31,4 +31,11 @@ export class QuestionService {
       updatedQuestion,
     )
   }
+  likeUnlikeQuestion(data: {
+    questionId: string
+    userId: string
+    isLiked: boolean
+  }): Observable<Question> {
+    return this.apiService.post<Question>(`${this.apiUrl}/likeUnlike`, data)
+  }
 }

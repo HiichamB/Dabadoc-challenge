@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h2 class="mb-4">Questions</h2>
+
+    <div class="">
+      <button
+        class="btn btn-primary"
+        class="btn btn-primary"
+        (click)="sortByDistance()"
+      >
+        Sort By Distance
+      </button>
+    </div>
+    <div class="">
+      <a [routerLink]="['/questions/add']" class="btn btn-primary">
+        Add Question
+      </a>
+    </div>
+  </div>
+  <div class="">
+    <div class="card mb-3" *ngFor="let question of questions">
+      <div class="card-body">
+        <h5 class="card-title">{{ question.title }}</h5>
+        <p class="card-text">{{ question.content }}</p>
+        <a [routerLink]="['/questions', question._id]" class="btn btn-primary">
+          Detail
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

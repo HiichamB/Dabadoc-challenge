@@ -59,7 +59,6 @@ export class AddQuestionComponent {
 
       console.log('invalid controls -->', invalidControls)
 
-      // #endregion invalids controls
       if (!this.location) {
         this.getUserLocation()
       }
@@ -72,9 +71,11 @@ export class AddQuestionComponent {
         .subscribe({
           next: (result) => {
             console.log(result)
+            this.form.get('title')?.setValue('')
+            this.form.get('content')?.setValue('')
           },
           error: (error: any) => {
-            // this.messagesService.showMessage('addError');
+            console.error(error)
           },
         })
     }
