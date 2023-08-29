@@ -22,8 +22,6 @@ export class QuestionDetailComponent {
     this.user = JSON.parse(sessionStorage.getItem('user') || '{}')
 
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params['id'])
-
       this.questionService.getQuestionById(params['id']).subscribe({
         next: (value) => {
           // Use an arrow function to retain the correct 'this' context
@@ -50,9 +48,7 @@ export class QuestionDetailComponent {
         isLiked: this.isLiked,
       })
       .subscribe({
-        next: (result) => {
-          console.log(result)
-        },
+        next: (result) => {},
         error: (error: any) => {
           console.error(error)
           this.isLiked = !this.isLiked

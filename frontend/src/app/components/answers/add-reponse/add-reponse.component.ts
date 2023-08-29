@@ -52,7 +52,6 @@ export class AddReponseComponent {
 
         .subscribe({
           next: (result) => {
-            console.log(result)
             this.newAnswer.emit(result)
             this.form.get('content')?.setValue('')
           },

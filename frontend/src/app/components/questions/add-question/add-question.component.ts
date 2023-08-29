@@ -35,7 +35,7 @@ export class AddQuestionComponent {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           this.location = `${position.coords.latitude}, ${position.coords.longitude}`
-          console.log('location.', this.location)
+
           this.form.get('location')?.setValue(this.location)
         },
         (error) => {
@@ -70,7 +70,6 @@ export class AddQuestionComponent {
 
         .subscribe({
           next: (result) => {
-            console.log(result)
             this.form.get('title')?.setValue('')
             this.form.get('content')?.setValue('')
           },

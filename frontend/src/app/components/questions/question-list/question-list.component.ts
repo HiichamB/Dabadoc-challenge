@@ -19,7 +19,6 @@ export class QuestionListComponent {
       next: (value) => {
         // Use an arrow function to retain the correct 'this' context
         this.questions = value
-        console.log('questions', this.questions)
       },
       error: (error) => {
         console.error('Error fetching questions:', error)

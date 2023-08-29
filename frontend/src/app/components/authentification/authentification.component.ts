@@ -67,7 +67,6 @@ export class AuthentificationComponent {
 
           .subscribe({
             next: (result) => {
-              console.log(result)
               this.form.reset()
             },
             error: (error: any) => {
